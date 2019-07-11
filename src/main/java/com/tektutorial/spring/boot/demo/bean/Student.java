@@ -6,14 +6,17 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 isGetterVisibility = JsonAutoDetect.Visibility.PUBLIC_ONLY)
 public class Student {
 
+    private static Integer studentId = 1;
     private Address address;
     private Name name;
     private Boolean isActive;
+
 
     public Student(Address address, Name name, Boolean isActive) {
         this.address = address;
         this.name = name;
         this.isActive = isActive;
+        studentId++;
     }
 
     public String getFirstName() {
@@ -38,5 +41,9 @@ public class Student {
 
     public Boolean isActive() {
         return isActive;
+    }
+
+    public Integer getStudentId(){
+        return studentId;
     }
 }
