@@ -8,12 +8,6 @@ pipeline {
     
 	stages {
 	
-		stage ('Initialize') {
-            steps {
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-            }
-        }
 		stage ('Build') {
 			steps {
 					bat 'mvn clean package -DskipTests' 
