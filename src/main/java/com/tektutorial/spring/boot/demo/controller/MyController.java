@@ -5,6 +5,7 @@ import com.tektutorial.spring.boot.demo.bean.Name;
 import com.tektutorial.spring.boot.demo.bean.Student;
 import com.tektutorial.spring.boot.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,9 @@ import java.util.List;
 @RestController
 public class MyController {
 
+	@Value("${HOSTNAME:not_set}")
+	private String hostName;
+	
     private StudentService studentService;
 
     @Autowired
@@ -29,5 +33,10 @@ public class MyController {
     @PostMapping("/student")
     public String addStudent()  {
         return studentService.addStudent();
+    }
+	
+	@GetMapping("/hello")
+    public String hello()  {
+        return hostName;
     }
 }
