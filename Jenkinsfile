@@ -6,7 +6,7 @@ pipeline {
 	
 		stage ('Build') {
 			steps {
-				sh 'mvn clean package' 
+				'mvn clean package' 
 			}
 			
 		}
@@ -17,8 +17,8 @@ pipeline {
 									credentialsId:'PCF_ID',
   									usernameVariable: 'USERNAME', 
   									passwordVariable: 'PASSWORD']]) {
-					sh 'cf login -a http://api.run.pivotal.io -u $USERNAME -p $PASSWORD'
-					sh 'cf push spring-boot-demo --random-route ' 
+					'cf login -a http://api.run.pivotal.io -u $USERNAME -p $PASSWORD'
+					'cf push spring-boot-demo --random-route ' 
 				}
 			}
 		}
