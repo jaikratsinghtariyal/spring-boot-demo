@@ -4,3 +4,5 @@ applications:
   instances: 
   memory: 800m
   path: target/spring-boot-demo-0.0.1-SNAPSHOT.jar
+  buildpacks:
+  - https://github.com/cloudfoundry/java-buildpack.git
