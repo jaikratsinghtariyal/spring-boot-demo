@@ -19,8 +19,8 @@ pipeline {
 									credentialsId:'PCF_ID',
   									usernameVariable: 'USERNAME', 
   									passwordVariable: 'PASSWORD']]) {
-					echo $USERNAME
-					echo $PASSWORD 
+					echo %USERNAME%
+					echo %PASSWORD% 
 				}
 			}
 		}
