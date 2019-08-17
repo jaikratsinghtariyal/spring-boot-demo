@@ -19,8 +19,8 @@ pipeline {
 									credentialsId:'PCF_ID',
   									usernameVariable: 'USERNAME', 
   									passwordVariable: 'PASSWORD']]) {
-					echo %USERNAME%
-					echo %PASSWORD% 
+					bat 'cf login -a http://api.run.pivotal.io -u %USERNAME% -p %PASSWORD%'
+					bat 'cf push spring-boot-demo --random-route ' 
 				}
 			}
 		}
