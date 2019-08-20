@@ -20,7 +20,7 @@ pipeline {
 									credentialsId:'PCF_ID',
   									usernameVariable: 'USERNAME', 
   									passwordVariable: 'PASSWORD']]) {
-					sh '/usr/local/bin/cf login -a http://api.run.pivotal.io -u %USERNAME% -p %PASSWORD%'
+					sh '/usr/local/bin/cf login -a http://api.run.pivotal.io -u $USERNAME -p $PASSWORD'
 					sh '/usr/local/bin/cf push spring-boot-demo --random-route ' 
 				}
 			}
