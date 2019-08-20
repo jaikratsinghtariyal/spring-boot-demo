@@ -6,6 +6,7 @@ pipeline {
         jdk 'JDK8'
     }
     
+    
 	stages {
 		stage ('Build') {
 			steps {
@@ -19,8 +20,8 @@ pipeline {
 									credentialsId:'PCF_ID',
   									usernameVariable: 'USERNAME', 
   									passwordVariable: 'PASSWORD']]) {
-					sh 'cf login -a http://api.run.pivotal.io -u %USERNAME% -p %PASSWORD%'
-					sh 'cf push spring-boot-demo --random-route ' 
+					sh '/usr/local/bin/cf login -a http://api.run.pivotal.io -u %USERNAME% -p %PASSWORD%'
+					sh '/usr/local/bin/cf push spring-boot-demo --random-route ' 
 				}
 			}
 		}
