@@ -3,17 +3,14 @@ package com.tektutorial.spring.boot.demo;
 import com.tektutorial.spring.boot.demo.controller.MyController;
 import com.tektutorial.spring.boot.demo.service.StudentService;
 import org.awaitility.Duration;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.awaitility.Awaitility.await;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,6 +25,8 @@ public class SpringBootDemoApplicationTests {
     @Autowired
     private StudentService studentService;
 
+    final static String ROOT_URI = "http://localhost:8082";
+
     @Test
     public void addStudentTest() throws Exception {
 
@@ -36,14 +35,15 @@ public class SpringBootDemoApplicationTests {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-        //Thread.sleep(3000);
-        Assert.assertTrue(studentService.isStudentActive());
+       /* Thread.sleep(3000);
+        Assert.assertTrue(studentService.isStudentActive());*/
 
-        /*await()
+        await()
             .atLeast(Duration.ONE_HUNDRED_MILLISECONDS)
-            .atMost(Duration.TWO_SECONDS)
+            .atMost(Duration.FIVE_SECONDS)
             .with()
             .pollInterval(Duration.ONE_HUNDRED_MILLISECONDS)
-            .until(studentService::isStudentActive);*/
+            .until(studentService::isStudentActive);
     }
+
 }
