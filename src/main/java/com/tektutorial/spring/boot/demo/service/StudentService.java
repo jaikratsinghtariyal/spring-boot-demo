@@ -21,7 +21,7 @@ public class StudentService {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	private final int INIT_DELAY = 2000;
+	private final int INIT_DELAY = 0;
 	private Executor executor = Executors.newFixedThreadPool(4);
 	private volatile Student student = null;
 	private volatile boolean isActive = false;
